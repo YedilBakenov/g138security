@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h1>HELLO USER!</h1>
+
+<h1>CHANGE PASSWORD:</h1>
+<form action="/change-pass" method="post">
+    <input type="password" name="oldPass"><br>
+    <input type="password" name="newPass"><br>
+    <input type="password" name="reNewPass"><br>
+    <button> CHANGE PASSWORD</button>
+</form>
+
+<br>
+
+<a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin">GO TO ADMIN PAGE</a>
+
+<form action="/log-out" method="post">
+    <button>LOG OUT</button>
+</form>
 
 </body>
 </html>
